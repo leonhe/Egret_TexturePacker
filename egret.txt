@@ -1,6 +1,8 @@
+{% load renamefile %}
+
 {
 "file": "{{settings.textureSubPath}}{{texture.fullName}}",
 "frames": {
 {% for sprite in allSprites %}
-    "{{sprite.trimmedName}}":{"x":{{sprite.frameRect.x}}, "y":{{sprite.frameRect.y}},"w":{{sprite.frameRect.width}}, "h":{{sprite.frameRect.height}},"offX":{{sprite.cornerOffset.x}},"offY":{{sprite.cornerOffset.y}},"sourceW":{{sprite.sourceRect.width}},"sourceH":{{sprite.sourceRect.height}}}{% if not forloop.last %},{% endif %}{% endfor %}}}
+    "{{sprite.fullName|renamefile}}":{"x":{{sprite.frameRect.x}}, "y":{{sprite.frameRect.y}},"w":{{sprite.frameRect.width}}, "h":{{sprite.frameRect.height}},"offX":{{sprite.cornerOffset.x}},"offY":{{sprite.cornerOffset.y}},"sourceW":{{sprite.sourceRect.width}},"sourceH":{{sprite.sourceRect.height}}}{% if not forloop.last %},{% endif %}{% endfor %}}}
 
